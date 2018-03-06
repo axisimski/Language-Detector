@@ -22,7 +22,7 @@ import javax.xml.transform.Result;
 
 public class detectActivity extends AsyncTask<Void, Void, Void> {
 
-    String data;
+    String data = "";
     String Result;
 
 
@@ -34,7 +34,7 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
         String userInput=tmp.replaceAll("\\s+", "+");
 
         StringBuilder stb= new StringBuilder();
-        stb.append("http://apilayer.net/api/detect?access_key=9e0d5359224168d5a9df8ceff4d4e2c3&query="+"Hello");
+        stb.append("http://apilayer.net/api/detect?access_key=9e0d5359224168d5a9df8ceff4d4e2c3&query="+userInput);
 
 
         try{
@@ -52,8 +52,8 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
             }
 
             JSONObject JO = new JSONObject(data);
-            JSONArray JA=JO.getJSONArray("results");
-            JSONObject JR=JA.getJSONObject(0);
+            JSONArray Jarr=JO.getJSONArray("results");
+            JSONObject JR=Jarr.getJSONObject(0);
             Result=JR.getString("language_name");
 
 
