@@ -117,8 +117,10 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
                 Context context = MainActivity.flag.getContext();
                 int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
-                MainActivity.flag.setImageResource(id);
 
+                if(id!=0) {
+                    MainActivity.flag.setImageResource(id);
+                }
                 Context context2 = MainActivity.flag2.getContext();
                 int id2 = context.getResources().getIdentifier(lc2, "drawable", context2.getPackageName());
                 MainActivity.flag2.setImageResource(id2);
@@ -126,11 +128,19 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
                 MainActivity.output2.setVisibility(View.VISIBLE);
                 MainActivity.flag2.setVisibility(View.VISIBLE);
 
-                MainActivity.input.setText("");
-
-
-
             }
+
+            else {
+                MainActivity.output.setText(Result);
+
+                Context context = MainActivity.flag.getContext();
+                int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
+                if (id != 0) {
+                    MainActivity.flag.setImageResource(id);
+                }
+            }
+
+            MainActivity.input.setText("");
 
 
         }
