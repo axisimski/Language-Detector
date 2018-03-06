@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +32,7 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
     String secondGuess="";
     String lc2;
     int JarrLength=0;
+    int worked=1;
     String accuracy;
 
 
@@ -98,9 +100,12 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
             if(Double.parseDouble(accuracy.toString())>20){
                 MainActivity.output.setText(Result);
+
                 Context context = MainActivity.flag.getContext();
                 int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
-                MainActivity.flag.setImageResource(id);
+                if(id!=0) {
+                    MainActivity.flag.setImageResource(id);
+                }
 
             }
 
@@ -126,6 +131,8 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
         }
 
+        else
+            worked=1;
 
     }
 

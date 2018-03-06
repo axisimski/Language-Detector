@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         a.execute();
 
         ((EditText) findViewById(R.id.input)).setText("");
+
+        if(a.worked==0){
+
+            Toast.makeText(this, "Could not identify the language, please try again", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
