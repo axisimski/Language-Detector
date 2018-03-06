@@ -13,25 +13,27 @@
         android:id="@+id/input"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="42dp"
-        android:layout_marginEnd="42dp"
-        android:layout_marginStart="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="75dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:background="@drawable/custom_edt"
         android:ems="10"
-        android:hint="Enter Text Here"
+        android:hint="Enter Text Here\n(The longer the text the more accurate the results)"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/detect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
 
     <Button
         android:id="@+id/detect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="166dp"
+        android:layout_marginBottom="130dp"
         android:background="@drawable/custom_btn"
         android:text="  Detect Language  "
         android:textColor="@color/colorPrimary"
@@ -43,13 +45,13 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="290dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="117dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="69dp"
-        app:layout_constraintBottom_toTopOf="@+id/input"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -71,6 +73,44 @@
             android:layout_height="34dp"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/flag"
+            android:background="@drawable/custom_edt"
+            android:text="  "
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="0dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="45dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2">
+
+        <ImageView
+            android:id="@+id/flag2"
+            android:layout_width="85dp"
+            android:layout_height="34dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            app:srcCompat="@drawable/un"
+            tools:layout_editor_absoluteX="215dp"
+            tools:layout_editor_absoluteY="56dp" />
+
+        <TextView
+            android:id="@+id/output2"
+            android:layout_width="183dp"
+            android:layout_height="34dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/flag2"
             android:background="@drawable/custom_edt"
             android:text="  "
             android:textAlignment="center"

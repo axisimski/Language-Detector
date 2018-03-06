@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
     static TextView output;
     static EditText input;
     static ImageView flag;
+    static ImageView flag2;
+    static TextView output2;
     Button play;
 
     @Override
@@ -25,7 +27,11 @@ public class MainActivity extends AppCompatActivity {
         input=(EditText) findViewById(R.id.input);
         play=(Button) findViewById(R.id.detect);
         flag=(ImageView)findViewById(R.id.flag);
+        flag2=(ImageView)findViewById(R.id.flag2);
+        output2=(TextView)findViewById(R.id.output2);
 
+        flag2.setVisibility(View.INVISIBLE);
+        output2.setVisibility(View.INVISIBLE);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void detectLanguage(){
+
+        flag2.setVisibility(View.INVISIBLE);
+        output2.setVisibility(View.INVISIBLE);
 
         detectActivity a = new detectActivity();
         a.execute();

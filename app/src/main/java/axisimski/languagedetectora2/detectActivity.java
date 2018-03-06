@@ -3,6 +3,7 @@ package axisimski.languagedetectora2;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
+import android.view.View;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,8 +27,10 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     String Result;
-    String secondGuess="";
     String lc;
+    String secondGuess="";
+    String lc2;
+    int JarrLength=0;
     String accuracy;
 
 
@@ -65,9 +68,10 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
             accuracy=JR.getString("probability");
 
            if( Jarr.length()>1) {
-
+               JarrLength=1;
                JSONObject JSecond = Jarr.getJSONObject(1);
                secondGuess = JSecond.getString("language_name");
+               lc2=JSecond.getString("language_code");
 
            }
 
@@ -92,18 +96,34 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
 
 
-            if(Double.parseDouble(accuracy.toString())<10){
-                Result=Result+" \n"+secondGuess;
+            if(Double.parseDouble(accuracy.toString())>20){
                 MainActivity.output.setText(Result);
+                Context context = MainActivity.flag.getContext();
+                int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
+                MainActivity.flag.setImageResource(id);
+
             }
 
-            else{
+            else if(Double.parseDouble(accuracy.toString())<20&&JarrLength==1){
                 MainActivity.output.setText(Result);
+                MainActivity.output2.setText(secondGuess);
+
+                Context context = MainActivity.flag.getContext();
+                int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
+                MainActivity.flag.setImageResource(id);
+
+                Context context2 = MainActivity.flag2.getContext();
+                int id2 = context.getResources().getIdentifier(lc2, "drawable", context2.getPackageName());
+                MainActivity.flag2.setImageResource(id2);
+
+                MainActivity.output2.setVisibility(View.VISIBLE);
+                MainActivity.flag2.setVisibility(View.VISIBLE);
+
+
+
             }
 
-            Context context = MainActivity.flag.getContext();
-            int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
-            MainActivity.flag.setImageResource(id);
+
         }
 
 
