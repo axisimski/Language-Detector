@@ -26,7 +26,10 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     String Result;
+    String secondGuess="";
     String lc;
+    String accuracy;
+
 
 
     @Override
@@ -59,8 +62,14 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
             JSONObject JR=Jarr.getJSONObject(0);
             Result=JR.getString("language_name");
             lc=JR.getString("language_code");
+            accuracy=JR.getString("probability");
 
+           if( Jarr.length()>1) {
 
+               JSONObject JSecond = Jarr.getJSONObject(1);
+               secondGuess = JSecond.getString("language_name");
+
+           }
 
 
         } catch (MalformedURLException e) {
@@ -81,7 +90,16 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
         if(Result!=null) {
 
-            MainActivity.output.setText(Result);
+
+
+            if(Double.parseDouble(accuracy.toString())<10){
+                Result=Result+" \n"+secondGuess;
+                MainActivity.output.setText(Result);
+            }
+
+            else{
+                MainActivity.output.setText(Result);
+            }
 
             Context context = MainActivity.flag.getContext();
             int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());

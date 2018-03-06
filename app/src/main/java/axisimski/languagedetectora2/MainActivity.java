@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
         detectActivity a = new detectActivity();
         a.execute();
 
-
-
+        ((EditText) findViewById(R.id.input)).setText("");
     }
 
 }
