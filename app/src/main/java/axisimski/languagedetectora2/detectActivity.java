@@ -1,5 +1,7 @@
 package axisimski.languagedetectora2;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 
 import org.json.JSONArray;
@@ -24,6 +26,7 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
     String data = "";
     String Result;
+    String lc;
 
 
     @Override
@@ -55,6 +58,7 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
             JSONArray Jarr=JO.getJSONArray("results");
             JSONObject JR=Jarr.getJSONObject(0);
             Result=JR.getString("language_name");
+            lc=JR.getString("language_code");
 
 
 
@@ -77,7 +81,12 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
 
         MainActivity.output.setText(Result);
 
-    }
+        Context context = MainActivity.flag.getContext();
+        int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
+        MainActivity.flag.setImageResource(id);
 
 
     }
+
+
+}
