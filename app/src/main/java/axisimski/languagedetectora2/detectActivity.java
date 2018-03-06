@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -27,13 +28,14 @@ import javax.xml.transform.Result;
 public class detectActivity extends AsyncTask<Void, Void, Void> {
 
     String data = "";
-    String Result;
+    String Result="n";
     String lc;
     String secondGuess="";
     String lc2;
     int JarrLength=0;
     int worked=1;
     String accuracy;
+
 
 
 
@@ -94,7 +96,7 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        if(Result!=null) {
+        if(!Result.equals("n")) {
 
 
 
@@ -124,6 +126,8 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
                 MainActivity.output2.setVisibility(View.VISIBLE);
                 MainActivity.flag2.setVisibility(View.VISIBLE);
 
+                MainActivity.input.setText("");
+
 
 
             }
@@ -132,7 +136,8 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
         }
 
         else
-            worked=1;
+          MainActivity.output.setText("Unknown");
+
 
     }
 

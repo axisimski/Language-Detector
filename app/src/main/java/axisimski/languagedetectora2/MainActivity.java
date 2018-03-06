@@ -47,16 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
         flag2.setVisibility(View.INVISIBLE);
         output2.setVisibility(View.INVISIBLE);
+        flag.setImageResource(R.drawable.un);
+        output.setText("");
 
         detectActivity a = new detectActivity();
         a.execute();
 
-        ((EditText) findViewById(R.id.input)).setText("");
 
-        if(a.worked==0){
 
-            Toast.makeText(this, "Could not identify the language, please try again", Toast.LENGTH_SHORT).show();
-        }
+
+
     }
 
 }
