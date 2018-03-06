@@ -2,6 +2,7 @@ package axisimski.languagedetectora2;
 
 import android.os.AsyncTask;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +14,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.xml.transform.Result;
+
 /**
  * Created by Alex on 3/5/2018.
  */
@@ -20,17 +23,18 @@ import java.net.URL;
 public class detectActivity extends AsyncTask<Void, Void, Void> {
 
     String data;
+    String Result;
 
 
     @Override
     protected Void doInBackground(Void... voids) {
 
 
-        String tmp=MainActivity.output.getText().toString();
+        String tmp=MainActivity.input.getText().toString();
         String userInput=tmp.replaceAll("\\s+", "+");
 
         StringBuilder stb= new StringBuilder();
-        stb.append("http://apilayer.net/api/detect?access_key=9e0d5359224168d5a9df8ceff4d4e2c3&query="+userInput);
+        stb.append("http://apilayer.net/api/detect?access_key=9e0d5359224168d5a9df8ceff4d4e2c3&query="+"Hello");
 
 
         try{
@@ -48,6 +52,9 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
             }
 
             JSONObject JO = new JSONObject(data);
+            JSONArray JA=JO.getJSONArray("results");
+            JSONObject JR=JA.getJSONObject(0);
+            Result=JR.getString("language_name");
 
 
 
@@ -64,5 +71,13 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
     }
 
 
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
 
-}
+        MainActivity.output.setText(Result);
+
+    }
+
+
+    }

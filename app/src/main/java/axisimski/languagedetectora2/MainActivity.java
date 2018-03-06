@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void detectLanguage(){
 
+        detectActivity a = new detectActivity();
+        a.execute();
 
 
 
