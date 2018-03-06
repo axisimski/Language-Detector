@@ -79,11 +79,14 @@ public class detectActivity extends AsyncTask<Void, Void, Void> {
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
 
-        MainActivity.output.setText(Result);
+        if(Result!=null) {
 
-        Context context = MainActivity.flag.getContext();
-        int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
-        MainActivity.flag.setImageResource(id);
+            MainActivity.output.setText(Result);
+
+            Context context = MainActivity.flag.getContext();
+            int id = context.getResources().getIdentifier(lc, "drawable", context.getPackageName());
+            MainActivity.flag.setImageResource(id);
+        }
 
 
     }
